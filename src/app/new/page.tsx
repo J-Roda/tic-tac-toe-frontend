@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -11,8 +12,10 @@ export default function NewGamePage() {
     const [player1, setPlayer1] = useState("");
     const [player2, setPlayer2] = useState("");
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const createSession = async () => {
+        setIsLoading(true);
         if (player1 === player2) {
             return toast.error("Players name must not be the same", {
                 position: "top-center",
@@ -33,6 +36,7 @@ export default function NewGamePage() {
         });
         const data = await res.json();
         router.push(`/game/${data._id}`);
+        setIsLoading(false);
     };
 
     const handlePlayerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +57,9 @@ export default function NewGamePage() {
         }
     };
 
-    return (
+    return isLoading ? (
+        <Loading />
+    ) : (
         <main className="min-h-screen flex flex-col items-center justify-center bg-gray-100 gap-5">
             <ToastContainer
                 position="top-center"

@@ -6,6 +6,7 @@ import GameBoard from "@/app/components/GameBoard";
 import confetti from "canvas-confetti";
 import { Session, TURN } from "@/app/lib/types";
 import GameHistory from "@/app/components/GameHistory";
+import Loading from "@/app/components/Loading";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -20,6 +21,7 @@ export default function GamePage() {
     ]);
     const [turn, setTurn] = useState<TURN>("❌");
     const [winner, setWinner] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(true);
 
     // 🧠 Check if someone won
     const checkWinner = (
@@ -156,24 +158,31 @@ export default function GamePage() {
     };
 
     const handleStop = async () => {
+        setIsLoading(true);
         await fetch(`${BASE_URL}/api/session/${id}/stop`, {
             method: "POST",
         });
         router.push("/");
+
+        setIsLoading(false);
     };
 
     const fetchSession = async () => {
+        setIsLoading(true);
         const res = await fetch(`${BASE_URL}/api/session/all`);
         const data = await res.json();
         const found = data.find((s: Session) => s._id === id);
         setSession(found || null);
+        setIsLoading(false);
     };
 
     useEffect(() => {
         fetchSession();
     }, [id]);
 
-    return (
+    return isLoading ? (
+        <Loading />
+    ) : (
         <main className="min-h-screen p-4 bg-gray-100 flex flex-col items-center justify-center">
             <h1 className="text-2xl font-bold mb-4">Game Session</h1>
             {session && (
