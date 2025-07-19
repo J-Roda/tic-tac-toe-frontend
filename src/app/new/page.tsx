@@ -15,7 +15,6 @@ export default function NewGamePage() {
     const [isLoading, setIsLoading] = useState(false);
 
     const createSession = async () => {
-        setIsLoading(true);
         if (player1 === player2) {
             return toast.error("Players name must not be the same", {
                 position: "top-center",
@@ -36,7 +35,6 @@ export default function NewGamePage() {
         });
         const data = await res.json();
         router.push(`/game/${data._id}`);
-        setIsLoading(false);
     };
 
     const handlePlayerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
