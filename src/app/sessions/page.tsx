@@ -24,7 +24,6 @@ const GameSessions = () => {
     }, []);
 
     const handleDeleteSession = async (id: string) => {
-        console.log("heelo");
         const result = await Swal.fire({
             title: "Are you sure?",
             text: `This session ${id} will be deleted permanently.`,
