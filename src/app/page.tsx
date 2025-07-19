@@ -13,7 +13,7 @@ export default function HomePage() {
             </Link>
             <Link href="/sessions" className="items-center">
                 <button className="px-4 py-2 bg-blue-800 text-white rounded hover:bg-blue-900 cursor-pointer">
-                    Game History
+                    Game Sessions History
                 </button>
             </Link>
         </main>

@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import GameBoard from "@/app/components/GameBoard";
 import confetti from "canvas-confetti";
 import { Session, TURN } from "@/app/lib/types";
-import SessionHistory from "@/app/components/SessionHistory";
+import GameHistory from "@/app/components/GameHistory";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -215,7 +215,7 @@ export default function GamePage() {
                             <div className="h-[72px]"></div>
                         )}
                     </div>
-                    <div className="col-span-2 md:col-span-1 max-h-[50vh] overflow-y-auto bg-gray-400 rounded-2xl flex flex-col items-center">
+                    <div className="col-span-2 md:col-span-1 overflow-y-auto bg-gray-400 rounded-2xl flex flex-col items-center">
                         <div className="flex flex-col md:flex-row items-center justify-around gap-2  w-full max-w-2xl bg-gray-300 p-4 ">
                             <div className="flex flex-col items-center">
                                 <h2>❌</h2>
@@ -238,7 +238,7 @@ export default function GamePage() {
                                 <h3>{session?.player2}</h3>
                             </div>
                         </div>
-                        <SessionHistory session={session} />
+                        <GameHistory session={session} />
                     </div>
                 </div>
             )}
