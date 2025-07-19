@@ -163,8 +163,6 @@ export default function GamePage() {
             method: "POST",
         });
         router.push("/");
-
-        setIsLoading(false);
     };
 
     const fetchSession = async () => {

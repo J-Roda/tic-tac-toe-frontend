@@ -56,9 +56,8 @@ const GameSessions = () => {
                     transition: Bounce,
                 });
             } else {
-                console.log(`Failed to delete session ${id}`);
                 console.error(res);
-                toast.error(`${res}`, {
+                toast.error(`Failed to delete session ${id}`, {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -74,10 +73,8 @@ const GameSessions = () => {
     };
 
     return isLoading ? (
-        // <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <Loading />
     ) : (
-        // </div>
         <div className="min-h-screen p-6 bg-gray-300 flex flex-col items-center justify-center gap-5">
             <ToastContainer
                 position="top-center"
