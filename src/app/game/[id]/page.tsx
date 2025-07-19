@@ -194,7 +194,7 @@ export default function GamePage() {
                         {winner ? (
                             <div className="text-center">
                                 {winner === "draw" ? (
-                                    <p>🤝 It's a Draw!</p>
+                                    <p>{"🤝 It's a Draw!"}</p>
                                 ) : (
                                     <p>🎉 Winner: {winner}</p>
                                 )}
