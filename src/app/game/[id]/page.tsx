@@ -226,8 +226,12 @@ export default function GamePage() {
                                     {session?.stats.player1Wins} :{" "}
                                     {session?.stats.player2Wins}
                                 </h2>
-                                <h3>Draws: {session?.stats.draws}</h3>
-                                <h3>Total: {session?.rounds.length} </h3>
+                                <div className="flex gap-2">
+                                    <h3>
+                                        Draw: {session?.stats.draws} | Rounds:{" "}
+                                        {session?.rounds.length}
+                                    </h3>
+                                </div>
                             </div>
                             <div className="flex flex-col items-center">
                                 <h2>🟢</h2>

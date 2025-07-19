@@ -17,7 +17,7 @@ const SessionHistory = ({ session }: SessionHistoryProps) => {
                         Round {index + 1}:{" "}
                         {round?.winner !== "draw"
                             ? `Winner: ${round.winner}`
-                            : "No winner"}
+                            : "DRAW!"}
                     </p>
                 </li>
             ))}
